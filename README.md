@@ -10,6 +10,15 @@
 **UNIVERSITAS ESA UNGGUL**  
 Fakultas Ilmu Komputer – Teknik Informatika 2024
 
+## Analisis Topologi
+Dengan menggunakan ISP sebagai penyedia IP publik, kita dapat menghubungkan tiga lokasi dengan tiga router MikroTik dan mengonfigurasi jaringan yang aman serta efisien menggunakan IP-in-IP Tunnel. Setiap lokasi memiliki router MikroTik yang terhubung ke ISP untuk menerima IP publik, memungkinkan komunikasi antar-lokasi melalui jaringan internet yang disediakan ISP.
+
+   Langkah pertama adalah mengonfigurasi dasar setiap router di lokasi KJ, CR, dan HI. Setiap router diberikan IP lokal untuk jaringan internal dan IP publik dari ISP untuk antarmuka internetnya. DHCP Server diaktifkan pada setiap router agar perangkat dalam jaringan lokal dapat memperoleh IP otomatis, dan NAT diaktifkan agar perangkat tersebut dapat mengakses internet melalui IP publik.
+
+   Untuk menghubungkan lokasi-lokasi tersebut, IP Tunnel dibangun antar-router. Setiap router memiliki dua interface tunnel yang diarahkan ke dua router lainnya. Misalnya, router di lokasi KJ memiliki satu tunnel ke lokasi CR dan satu ke lokasi HI. Hal ini memungkinkan data mengalir langsung dari satu lokasi ke lainnya tanpa harus melewati internet publik sepenuhnya, karena endpoint tunnel diarahkan ke IP publik dari ISP.
+
+   Setiap router diatur dengan routing statis untuk mengarahkan lalu lintas ke lokasi lain. Dengan konfigurasi ini, perangkat di lokasi KJ, CR, dan HI dapat berkomunikasi seperti berada dalam satu jaringan besar meskipun secara fisik terpisah. Untuk keamanan ekstra, IPsec dapat digunakan pada setiap koneksi tunnel, yang mengenkripsi data yang mengalir antar-lokasi. Dengan cara ini, ISP berfungsi sebagai penyedia IP publik, sedangkan 
+
 ## ESSAY:
 ### 1. **Jelaskan menurut anda apa itu Routing Static?**
 Routing Static adalah proses di mana suatu router dikonfigurasi secara manual oleh administrator. Administrator harus memasukkan atau menghapus rute statis setiap kali ada perubahan yang diperlukan.
